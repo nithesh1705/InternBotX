@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternBotX</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: hsl(0, 100%, 74%);
+            --green: hsl(154, 59%, 51%);
+            --blue: hsl(248, 32%, 49%);
+            --grey: hsl(246, 25%, 77%);
+            --dark: hsl(249, 10%, 26%);
+            --bodyCopy: 16px;
+            --regular: 400;
+            --bold: 700;
+            --radius: 10px;
+        }
+
+        html,
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--red);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            color: var(--dark);
+        }
+
+        body {
+            background-image: url('https://raw.githubusercontent.com/hejkeikei/intro-component-with-signup-form/main/images/bg-intro-desktop.png');
+            font-size: var(--bodyCopy);
+        }
+
+        main {
+            display: flex;
+            max-width: 110ch;
+            min-height: 95vh;
+            margin: 0 auto;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        header,
+        form>p:first-of-type,
+        input[type=submit] {
+            color: white;
+        }
+
+        form,
+        header {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+        }
+
+        a {
+            font-weight: bold;
+            color: var(--red);
+            text-decoration: none;
+        }
+
+        form>p:first-of-type {
+            background-color: var(--blue);
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        form div,
+        form>p:first-of-type {
+            box-shadow: 0px 7px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin: 1rem 0 .5rem 0;
+            padding: 1rem;
+            border: solid 1px var(--grey);
+            border-radius: calc(var(--radius) / 2);
+            font-weight: var(--bold);
+            outline: none;
+        }
+
+        input[type=submit] {
+            background-color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            cursor: pointer;
+            font-size: medium;
+            box-shadow: inset 0px -4px rgba(0, 0, 0, 0.1);
+            transition: all .2s ease-in-out;
+        }
+
+        input[type=submit]:hover {
+            box-shadow: inset 0px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .attribution,
+        #formPad p:last-of-type,
+        .errMsg {
+            font-size: x-small;
+            text-align: center;
+        }
+
+        .errMsg {
+            text-align: right;
+            color: var(--red);
+            font-size: x-small;
+            font-style: italic;
+            font-weight: 500;
+            margin: 0 0 1rem 0;
+        }
+
+        .attribution a {
+            color: var(--blue);
+        }
+
+        #formPad {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+        }
+
+        @media screen and (max-width: 660px) {
+            body {
+                background-image: url('https://raw.githubusercontent.com/hejkeikei/intro-component-with-signup-form/main/images/bg-intro-desktop.png');
+            }
+
+            main {
+                flex-direction: column;
+            }
+
+            header {
+                text-align: center;
+            }
+        }
+
+        button {
+            position: relative;
+            font-family: inherit;
+            font-size: 18px;
+            border-radius: 5cm;
+            width: 8em;
+            height: 3em;
+            z-index: 1;
+            color: white;
+            overflow: hidden;
+            border: none;
+        }
+
+        button .text {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            line-height: 3em;
+            border-radius: 40em;
+            border: none;
+            background: linear-gradient(rgba(255, 255, 255, 0.473), rgba(150, 150, 150, 0.25));
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        button .blob {
+            position: absolute;
+            z-index: -1;
+            border-radius: 5em;
+            width: 5em;
+            height: 3em;
+            transition: transform .3s ease-in-out, background .3s ease-in-out;
+        }
+
+        button .blob:nth-child(2) {
+            left: 0em;
+            top: 0;
+            background: #ff930f;
+        }
+
+        button .blob:nth-child(3) {
+            left: 1.8em;
+            top: 0;
+            z-index: -1;
+            background: #bf0fff;
+        }
+
+        button .blob:nth-child(4) {
+            left: 4em;
+            top: -1em;
+            background: #ff1b6b;
+        }
+
+        button .blob:nth-child(5) {
+            left: 4.3em;
+            top: 1.6em;
+            background: #0061ff;
+        }
+
+        button:hover .blob:nth-child(2) {
+            background: #0061ff;
+        }
+
+        button:hover .blob:nth-child(3) {
+            background: #ff1b6b;
+        }
+
+        button:hover .blob:nth-child(4) {
+            background: #bf0fff;
+        }
+
+        button:hover .blob:nth-child(5) {
+            background: #ff930f;
+        }
+
+        button:hover .blob {
+            transform: scale(1.3);
+        }
+
+        button:active {
+            border: 2px solid white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>InternBotX</h1>
+            <p>
+                This InternBotX is a softoware bot developed with the RPA (Robotic Process Automation) Technology using the UiPath (Automation Software). This bot helps you to reduce your search time and get you the best offers.
+            </p>
+        </header>
+        <form action="#" method="post">
+            <p><b>Plese fill the below details to extract the data for you :)</p>
+
+            <!--
+                1) Technology
+                2) Location
+                3) Salary Package
+                4) Age
+                5) Experience
+                6) Email
+                7) Phone Number
+            -->
+
+            <div id="formPad">
+                <input type="text" name="tech" id="tech" placeholder="Technology" required>
+
+                <input type="text" name="locat" id="locat" placeholder="Location" required>
+
+                <input type="text" name="salary" id="salary" placeholder="Salary Package" required>
+
+                <input type="text" name="age" id="age" placeholder="Age" required>
+
+                <input type="text" name="exp" id="exp" placeholder="Experience" required>
+
+                <input type="email" name="email" id="email" placeholder="Email Address"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+                <input type="text" name="phnum" id="phnum" placeholder="Phone Number (WhatsApp)"
+                    pattern="[0-9]{10}" required>
+
+                <!-- <input type="submit" value="Claim your free trial" id="submit"> -->
+
+                <center><button id="Submit"> <span class="text">Trigger</span>
+                    <span class="blob"></span>
+                    <span class="blob"></span>
+                    <span class="blob"></span>
+                    <span class="blob"></span>
+                  </button>
+                </center>
+                <p>
+                    After clicking the button, please don't interrupt in bettwen while the bot runs.
+                </p>
+            </div>
+        </form>
+    </main>
+</body>
+
+<script>
+    document.getElementById("SubmitButton").onclick= function() {
+
+    var Technology = document.getElementById("tech").value; 
+    var Location = document.getElementById("locat").value; 
+    var Salary = document.getElementById("salary").value;
+    var Age = document.getElementById("age").value;
+    var Experience = document.getElementById("exp").value;
+    var Email = document.getElementById("email").value;
+    var Phnum = document.getElementById("phnum").value;
+    
+    var OutputString = "{\"tech\":\"" + Technology + "\"," + "\"loac\":\"" + Location + "\"," + 
+    "\"sal\":\"" + Salary + "\"," + "\"age\":\"" + Age + "\"," + "\"exp\":\"" + Experience + 
+    "\"," + "\"email\":\"" + Email + "\"," + "\"phnum\":\"" + Phnum + "\"}";
+
+    window.external.setResult (Outputstring);
+    };
+
+</script>
+
+</html>
